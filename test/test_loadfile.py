@@ -63,4 +63,5 @@ for i in range(0,5):
 data[0][0] = 'sdsdsd'
 log('Get a copy of the instance..............')
 print(lf.copy_data())
+print(lf)
 

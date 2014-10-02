@@ -3,7 +3,7 @@
 #--------------------------------------------------------------------
 __author__ = "Mats Larsen"
 __copyright__ = "Mats Larsen 2014"
-__credits__ = ["Mats Larsen"]
+__credits__ = "Mats Larsen"
 __license__ = "GPLv3"
 __maintainer__ = "Mats Larsen"
 __email__ = "larsen.mats.87@gmail.com"
@@ -65,8 +65,13 @@ class LoadFile(object):
         comment-> STR : A list of elements that have to be ignored.
         col_number-> int : The number of how many columes that are used.
         """
+        print(path)
         self._name = name 
-        self._path = path
+        log('Name of the path -> ' + path)
+        if path != None and  os.path.exists(path):
+            self._path = path
+        else:
+            print('Error--------')
         self._file = open(self._path,'r') # Open the desired file(path)
         self._count_lines = 0 # count the relevant lines in the file.
         col=[] # Make an array with col_number, that should contain of the file.
@@ -79,6 +84,7 @@ class LoadFile(object):
             else: # relavant data
                 self._count_lines +=1
                 for x in range(0,col_number):
+                    print(col)
                     col[x].append(line.split(':')[x].strip()) # insert in the correct matrix and split with : and remove spaces.
         # Create a matrix and insert the data from the file.
                 #print(col)
@@ -121,5 +127,25 @@ class LoadFile(object):
         Set new name of the instance.
         """
         self._name = new_name
-
     name = property(get_name, set_name, doc = 'Name Property')
+  
+    def get_path(self):
+        """
+        Return the path tol this file.
+        """
+        return self._path
+
+    def set_path(self,newpath):
+        """
+        Set a new path.
+        """
+        self._path = newpath
+    path = property(get_path,set_path,doc='Path Property')
+
+
+    def __repr__(self):
+        """
+        Present the data of the object.
+        """
+        return '----------------------------------------------------\nAdministration Details : \n' + 'author-> %s \ncopyright-> %s \ncredits-> %s \ndescription-> %s \nlicense-> %s'   % (__author__, __author__,__credits__,__description__,__license__)
+# + '
