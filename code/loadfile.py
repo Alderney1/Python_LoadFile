@@ -84,7 +84,7 @@ class LoadFile(object):
             else: # relavant data
                 self._count_lines +=1
                 for x in range(0,col_number):
-                    print(col)
+                    #print(col)
                     col[x].append(line.split(':')[x].strip()) # insert in the correct matrix and split with : and remove spaces.
         # Create a matrix and insert the data from the file.
                 #print(col)
