@@ -18,9 +18,9 @@ __dependencies__ = []
 __version_stage__ = "Pre_alpha"
 __version_number__ = "0.1"
 __version_date__ = "20140917"
-__version_risk__ = "This current version is in Pre-alpha version, which meaning that the program can crash or perform other unrespected behavoiurs."
+__version_risk__ = "This current version is in Pre-alpha version, which meaning that the program can crash or perform other unrestricted behaviours."
 __version_modification__ = "The development project has just been created."
-__version_next_update__ = "Implementation of more messeages."
+__version_next_update__ = "Implementation of more messages."
 #--------------------------------------------------------------------
 #Hardware
 #--------------------------------------------------------------------
@@ -77,25 +77,19 @@ class LoadFile(object):
         col=[] # Make an array with col_number, that should contain of the file.
         for i in range(0,col_number):
             col.append([])
-        #print(col)
         for line in self._file: # Loop each line in the file.
             if line.startswith(comment): # Skip the line which first one of the signs in the argumet 'comment'.
                 pass 
             else: # relavant data
                 self._count_lines +=1
                 for x in range(0,col_number):
-                    #print(col)
                     col[x].append(line.split(':')[x].strip()) # insert in the correct matrix and split with : and remove spaces.
         # Create a matrix and insert the data from the file.
-                #print(col)
         self._data = [[0 for x in range(col_number)] for x in range(self._count_lines)] 
         # Inserting the data into a matrix.
-        #print(col)
-        #print(self._data)
         for x in range(0,self._count_lines):
             for n in range(0,col_number):
                 self._data[x][n] = col[n][x]
-            #print(self._data)
 
     def copy_data(self):
         """
